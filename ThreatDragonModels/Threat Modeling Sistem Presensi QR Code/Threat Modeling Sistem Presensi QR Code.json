@@ -45,8 +45,8 @@
             },
             "visible": true,
             "shape": "trust-boundary-box",
-            "id": "c69382df-085f-477a-b0f6-8bfd98c05d58",
             "zIndex": -1,
+            "id": "c69382df-085f-477a-b0f6-8bfd98c05d58",
             "data": {
               "type": "tm.BoundaryBox",
               "name": "Area Client",
@@ -87,8 +87,8 @@
             },
             "visible": true,
             "shape": "trust-boundary-box",
-            "id": "dffa6b19-e62b-4f80-9629-50d7958fc0ab",
             "zIndex": -1,
+            "id": "dffa6b19-e62b-4f80-9629-50d7958fc0ab",
             "data": {
               "type": "tm.BoundaryBox",
               "name": "Area Server",
@@ -135,8 +135,8 @@
             },
             "visible": true,
             "shape": "trust-boundary-box",
-            "id": "9e4e6363-a251-44c0-bca9-3d3415036f2e",
             "zIndex": -1,
+            "id": "9e4e6363-a251-44c0-bca9-3d3415036f2e",
             "data": {
               "type": "tm.BoundaryBox",
               "name": "Area Database",
@@ -172,8 +172,8 @@
                 "text": "Mahasiswa"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -270,9 +270,27 @@
               "isTrustBoundary": false,
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "providesAuthentication": false,
-              "threats": []
+              "threats": [
+                {
+                  "id": "26fbbf41-be62-4c35-a43c-74822faaff59",
+                  "title": "Penyalahgunaan Identitas Mahasiswa",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Spoofing",
+                  "description": "Pelaku dapat menyalahgunakan kredensial atau token milik mahasiswa lain untuk menyamar sebagai pengguna yang sah dan melakukan presensi atas nama mahasiswa tersebut. Kondisi ini dapat menyebabkan ketidakakuratan data kehadiran.\n\nPenilaian risiko awal: Likelihood = 2 dan Impact = 2, sehingga Risk Score = 2 × 2 = 4 (Medium).",
+                  "mitigation": "Menerapkan autentikasi pengguna yang kuat, menjaga kerahasiaan kredensial dan token, membatasi masa berlaku token, serta melakukan validasi identitas mahasiswa pada sisi server sebelum permintaan presensi diproses.\n Salin Description Salin Mitigations",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 1,
+                  "score": "4"
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 1,
+                "repudiation": 0
+              }
             }
           },
           {
@@ -1790,7 +1808,12 @@
               "cell": "c63e0336-6feb-444c-8e1a-53a374b1928b",
               "port": "38bd6df3-ef0f-4144-a5ae-c6ebd81faf51"
             },
-            "vertices": []
+            "vertices": [
+              {
+                "x": 680,
+                "y": 230
+              }
+            ]
           },
           {
             "shape": "flow",
@@ -2459,8 +2482,8 @@
         "description": "iagram aliran data sistem presensi perkuliahan berbasis QR Code"
       }
     ],
-    "diagramTop": 1,
+    "diagramTop": 2,
     "reviewer": "Dosen Pengampu",
-    "threatTop": 0
+    "threatTop": 1
   }
 }
