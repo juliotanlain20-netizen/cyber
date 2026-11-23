@@ -5,7 +5,7 @@
   "summary": {
     "title": "Threat Modeling Sistem Presensi QR Code",
     "owner": "Jufafa",
-    "description": "Analisis keamanan sistem presensi perkuliahan berbasis QR Code menggunakan STRIDE\nASUMSI TEKNIS\nASUMSI TEKNIS\n\n1. Sistem presensi memiliki tiga jenis pengguna, yaitu mahasiswa, dosen pengampu, dan admin akademik. Setiap pengguna memiliki hak akses sesuai dengan perannya.\n\n2. Dosen hanya dapat membuka dan menutup sesi presensi serta melihat daftar kehadiran kelas yang diampunya. Admin akademik dapat mengakses rekap kehadiran seluruh kelas.\n\n3. QR Code digunakan sebagai identitas sesi presensi tertentu dan memiliki masa berlaku sesuai ketentuan yang ditetapkan dalam sistem. Jika ketentuan tugas menetapkan lima menit, gunakan masa berlaku lima menit.\n\n4. Backend Presensi melakukan validasi identitas pengguna, keanggotaan mahasiswa dalam kelas, status sesi, dan kemungkinan presensi ganda sebelum menyimpan data kehadiran.\n\n5. Layanan Autentikasi Kampus bertugas memverifikasi identitas pengguna dan memberikan informasi hasil autentikasi kepada Backend Presensi.\n\n6. Database Akademik menyimpan informasi mahasiswa, dosen, kelas, jadwal perkuliahan, sesi presensi, dan catatan kehadiran.\n\n7. Sistem diasumsikan memiliki pencatatan aktivitas (audit log) untuk membantu penelusuran apabila terjadi kesalahan atau sengketa data presensi.",
+    "description": "Analisis keamanan sistem presensi perkuliahan berbasis QR Code menggunakan STRIDE\nASUMSI TEKNIS\n1. Sistem presensi memiliki tiga jenis pengguna, yaitu mahasiswa, dosen pengampu, dan admin akademik. Setiap pengguna memiliki hak akses sesuai dengan perannya.\n\n2. Dosen hanya dapat membuka dan menutup sesi presensi serta melihat daftar kehadiran kelas yang diampunya. Admin akademik dapat mengakses rekap kehadiran seluruh kelas.\n\n3. QR Code digunakan sebagai identitas sesi presensi tertentu dan memiliki masa berlaku sesuai ketentuan yang ditetapkan dalam sistem. Jika ketentuan tugas menetapkan lima menit, gunakan masa berlaku lima menit.\n\n4. Backend Presensi melakukan validasi identitas pengguna, keanggotaan mahasiswa dalam kelas, status sesi, dan kemungkinan presensi ganda sebelum menyimpan data kehadiran.\n\n5. Layanan Autentikasi Kampus bertugas memverifikasi identitas pengguna dan memberikan informasi hasil autentikasi kepada Backend Presensi.\n\n6. Database Akademik menyimpan informasi mahasiswa, dosen, kelas, jadwal perkuliahan, sesi presensi, dan catatan kehadiran.\n\n7. Sistem diasumsikan memiliki pencatatan aktivitas (audit log) untuk membantu penelusuran apabila terjadi kesalahan atau sengketa data presensi.",
     "id": 0
   },
   "detail": {
@@ -1561,6 +1561,16 @@
               "cell": "075060b0-8a03-4f20-b2a4-c056a31127d9",
               "port": "1c7dbc30-8194-40c1-920a-1b6bdef4bf51"
             },
+            "vertices": [
+              {
+                "x": 390,
+                "y": 290
+              },
+              {
+                "x": 130,
+                "y": 420
+              }
+            ],
             "tools": {
               "items": [
                 "boundary",
@@ -1575,17 +1585,7 @@
                 "target-arrowhead"
               ],
               "name": null
-            },
-            "vertices": [
-              {
-                "x": 390,
-                "y": 290
-              },
-              {
-                "x": 130,
-                "y": 420
-              }
-            ]
+            }
           },
           {
             "shape": "flow",
