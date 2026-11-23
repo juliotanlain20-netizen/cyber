@@ -541,8 +541,8 @@
                 "text": "Browser / Aplikasi Web"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -639,12 +639,34 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "328d6a8e-97b6-4a60-b0a6-869b700fb566",
+                  "title": "Penyangkalan Aktivitas Presensi",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Repudiation",
+                  "description": "Mahasiswa dapat menyangkal telah melakukan presensi atau menyatakan bahwa catatan kehadiran yang tersimpan tidak sesuai dengan aktivitas sebenarnya. Kondisi ini dapat terjadi apabila sistem tidak memiliki audit log yang memadai untuk mencatat identitas pengguna, waktu transaksi, ID sesi, dan hasil pencatatan presensi. Akibatnya, pihak akademik akan kesulitan melakukan penelusuran dan pembuktian terhadap aktivitas presensi.\n\nPenilaian risiko awal menggunakan Likelihood sebesar 2 dan Impact sebesar 2, sehingga Risk Score = 2 × 2 = 4 dengan tingkat risiko Medium.",
+                  "mitigation": "Menerapkan audit log yang mencatat identitas pengguna, waktu presensi, ID sesi, dan hasil transaksi. Catatan aktivitas harus dilindungi dari perubahan atau penghapusan tanpa izin serta dapat diperiksa oleh pihak yang berwenang.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 3,
+                  "score": "4"
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 0,
+                "repudiation": 1,
+                "informationDisclosure": 0,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
             }
           },
           {
@@ -901,11 +923,13 @@
                 "text": "Database Akademik"
               },
               "topLine": {
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               },
               "bottomLine": {
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -1002,13 +1026,33 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isALog": false,
               "isEncrypted": false,
               "isSigned": false,
               "storesCredentials": false,
               "storesInventory": false,
-              "threats": []
+              "threats": [
+                {
+                  "id": "cc2d329b-f28b-4e49-8e88-a1894cacd2fd",
+                  "title": "Kebocoran Data Kehadiran Mahasiswa",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "Pengguna yang tidak memiliki kewenangan dapat memperoleh akses terhadap data mahasiswa, jadwal perkuliahan, dan catatan kehadiran yang tersimpan dalam Database Akademik. Kondisi ini dapat terjadi apabila pengendalian akses dan perlindungan data belum diterapkan secara memadai. Kebocoran tersebut dapat mengakibatkan informasi akademik diketahui oleh pihak yang tidak berhak.\n\nPenilaian risiko awal menggunakan Likelihood sebesar 2 dan Impact sebesar 3, sehingga Risk Score = 2 × 3 = 6 dengan tingkat risiko High.",
+                  "mitigation": "Menerapkan Role-Based Access Control (RBAC), membatasi akses database berdasarkan peran pengguna, menggunakan enkripsi untuk melindungi data saat disimpan dan dikirim, serta melakukan pemantauan terhadap aktivitas akses database.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 4,
+                  "score": "6"
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 0
+              }
             }
           },
           {
@@ -1764,7 +1808,8 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "targetMarker": {
                   "name": "block"
                 },
@@ -1785,16 +1830,35 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": [],
+              "threats": [
+                {
+                  "id": "c2a59403-ac61-4c21-a75c-29dfce72cb61",
+                  "title": "Manipulasi Data Permintaan Presensi",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "Pelaku dapat memanipulasi data permintaan presensi, seperti identitas mahasiswa atau ID sesi, sebelum data diproses oleh Backend Presensi. Apabila sistem tidak melakukan validasi secara memadai, manipulasi tersebut dapat menyebabkan pencatatan kehadiran yang tidak sah dan mengubah keakuratan data akademik.\n\nPenilaian risiko awal menggunakan Likelihood sebesar 2 dan Impact sebesar 3, sehingga Risk Score = 2 × 3 = 6 dengan tingkat risiko High.",
+                  "mitigation": "Melakukan validasi seluruh input pada sisi server, memastikan identitas mahasiswa diperoleh dari sesi autentikasi yang sah, memverifikasi ID sesi presensi, menggunakan komunikasi HTTPS, serta mencegah pencatatan kehadiran ganda.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 2,
+                  "score": "6"
+                }
+              ],
               "trustBoundaryIds": [
                 "c69382df-085f-477a-b0f6-8bfd98c05d58",
                 "dffa6b19-e62b-4f80-9629-50d7958fc0ab"
-              ]
+              ],
+              "threatFrequency": {
+                "tampering": 1,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
             },
             "labels": [
               "Permintaan Pencatatan Presensi"
@@ -2484,6 +2548,6 @@
     ],
     "diagramTop": 2,
     "reviewer": "Dosen Pengampu",
-    "threatTop": 1
+    "threatTop": 4
   }
 }
