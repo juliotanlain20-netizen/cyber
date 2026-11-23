@@ -657,6 +657,32 @@
                   "new": false,
                   "number": 3,
                   "score": "4"
+                },
+                {
+                  "id": "8734ebad-be10-4120-ab2c-2b4854e00575",
+                  "title": "Gangguan Ketersediaan Backend Presensi",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Denial of service",
+                  "description": "Pelaku dapat mengirimkan permintaan dalam jumlah besar secara terus-menerus ke Backend Presensi sehingga menyebabkan penggunaan sumber daya server meningkat dan layanan mengalami gangguan. Apabila kondisi tersebut terjadi ketika perkuliahan berlangsung, mahasiswa dapat mengalami kesulitan melakukan presensi dan dosen tidak dapat mengelola sesi kehadiran.\n\nPenilaian risiko awal menggunakan Likelihood sebesar 2 dan Impact sebesar 3, sehingga Risk Score = 2 × 3 = 6 dengan tingkat risiko High.",
+                  "mitigation": "Menerapkan rate limiting untuk membatasi jumlah permintaan, melakukan pemantauan kapasitas server, menggunakan perlindungan terhadap serangan Distributed Denial of Service (DDoS), serta menyediakan mekanisme pemulihan layanan apabila terjadi gangguan.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 5,
+                  "score": "6"
+                },
+                {
+                  "id": "ae6de2b8-0134-4066-8b3f-e5f5d5a0cabb",
+                  "title": "Penyalahgunaan Hak Akses Pengguna",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Elevation of privilege",
+                  "description": "Mahasiswa yang memiliki hak akses terbatas dapat mencoba memperoleh akses ke fungsi yang seharusnya hanya dapat digunakan oleh dosen atau admin akademik. Kondisi ini dapat terjadi apabila Backend Presensi tidak melakukan pemeriksaan otorisasi pada setiap permintaan pengguna. Akibatnya, pengguna dapat mencoba membuka sesi presensi, mengubah pengaturan kelas, atau mengakses rekap kehadiran yang bukan menjadi kewenangannya.\n\nPenilaian risiko awal menggunakan Likelihood sebesar 2 dan Impact sebesar 3, sehingga Risk Score = 2 × 3 = 6 dengan tingkat risiko High.",
+                  "mitigation": "Menerapkan Role-Based Access Control (RBAC), melakukan pemeriksaan otorisasi pada setiap permintaan di sisi server, membatasi dosen agar hanya dapat mengelola kelas yang diampunya, serta memastikan admin akademik dan mahasiswa hanya dapat mengakses fungsi sesuai dengan hak masing-masing.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 6,
+                  "score": "6"
                 }
               ],
               "threatFrequency": {
@@ -664,8 +690,8 @@
                 "tampering": 0,
                 "repudiation": 1,
                 "informationDisclosure": 0,
-                "denialOfService": 0,
-                "elevationOfPrivilege": 0
+                "denialOfService": 1,
+                "elevationOfPrivilege": 1
               }
             }
           },
@@ -2548,6 +2574,6 @@
     ],
     "diagramTop": 2,
     "reviewer": "Dosen Pengampu",
-    "threatTop": 4
+    "threatTop": 6
   }
 }
