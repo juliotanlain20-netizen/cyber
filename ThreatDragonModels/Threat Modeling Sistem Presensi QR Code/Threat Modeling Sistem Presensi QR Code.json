@@ -280,7 +280,7 @@
                   "severity": "Medium",
                   "type": "Spoofing",
                   "description": "Pelaku dapat menyalahgunakan kredensial atau token milik mahasiswa lain untuk menyamar sebagai pengguna yang sah dan melakukan presensi atas nama mahasiswa tersebut. Kondisi ini dapat menyebabkan ketidakakuratan data kehadiran.\n\nPenilaian risiko awal: Likelihood = 2 dan Impact = 2, sehingga Risk Score = 2 × 2 = 4 (Medium).",
-                  "mitigation": "Menerapkan autentikasi pengguna yang kuat, menjaga kerahasiaan kredensial dan token, membatasi masa berlaku token, serta melakukan validasi identitas mahasiswa pada sisi server sebelum permintaan presensi diproses.\n Salin Description Salin Mitigations",
+                  "mitigation": "Menerapkan autentikasi pengguna yang kuat, menjaga kerahasiaan kredensial dan token, membatasi masa berlaku token, serta melakukan validasi identitas mahasiswa pada sisi server sebelum permintaan presensi diproses.",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 1,
@@ -288,7 +288,7 @@
                 }
               ],
               "threatFrequency": {
-                "spoofing": 1,
+                "spoofing": 2,
                 "repudiation": 0
               }
             }
@@ -818,7 +818,7 @@
           {
             "position": {
               "x": 880,
-              "y": 210
+              "y": 200
             },
             "size": {
               "width": 60,
@@ -1425,7 +1425,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "Hasil penyimpanan dan data kehadiran",
+              "name": "Konfirmasi Pencatatan Presensi",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -1442,7 +1442,7 @@
               ]
             },
             "labels": [
-              "Hasil penyimpanan dan data kehadiran"
+              "Konfirmasi Pencatatan Presensi"
             ],
             "id": "1774b26e-93f8-4241-96d4-0bbe13146cf8",
             "source": {
@@ -1454,6 +1454,10 @@
               "port": "38bd6df3-ef0f-4144-a5ae-c6ebd81faf51"
             },
             "vertices": [
+              {
+                "x": 680,
+                "y": 190
+              },
               {
                 "x": 700,
                 "y": 190
@@ -1532,7 +1536,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "Tampilan rekap kehadiran",
+              "name": "Tampilan Rekap Seluruh Kelas",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -1546,7 +1550,7 @@
               "trustBoundaryIds": []
             },
             "labels": [
-              "Tampilan rekap kehadiran"
+              "Tampilan Rekap Seluruh Kelas"
             ],
             "id": "ffdb9aad-cebc-4e58-9f9e-335a392d1bd9",
             "source": {
@@ -1561,8 +1565,27 @@
               {
                 "x": 390,
                 "y": 290
+              },
+              {
+                "x": 130,
+                "y": 420
               }
-            ]
+            ],
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead",
+                "boundary",
+                "button-remove",
+                "vertices",
+                "source-arrowhead",
+                "target-arrowhead"
+              ],
+              "name": null
+            }
           },
           {
             "shape": "flow",
@@ -2574,6 +2597,6 @@
     ],
     "diagramTop": 2,
     "reviewer": "Dosen Pengampu",
-    "threatTop": 6
+    "threatTop": 7
   }
 }
